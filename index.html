@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda com VueJS</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/database.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <h1>{{ title }}</h1>
+      <p>{{ subtitle }}</p>
+    </header>
+    <main id="main">
+      <button class="button-add" @click="create">Adicionar Lembrete</button>
+      <ul class="todo-itens">
+        <todo-item
+          class="todo-item"
+          v-for="task in tasks"
+          v-bind:key="task.id"
+          v-bind:class="{
+            highlight:task.key == selectedTask,
+            completed:task.completed
+          }"
+          v-on:destroy="destroy"
+          v-on:editable="makeEditable"
+          v-on:completed="markCompleted"
+          v-on:update="update"
+          v-bind:todo="task">
+        </todo-item>
+      </ul>
+    </main>
+    <footer>
+      <p>Todos os direitos reservados</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/header.js"></script>
+  </body>
+</html>
