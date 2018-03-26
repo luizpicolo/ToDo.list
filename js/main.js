@@ -1,8 +1,8 @@
 const main = new Vue({
   el: '#main',
   data: {
-    selectedTask: 0,
-    completedTask: 0,
+    selectedTask: undefined,
+    completedTask: undefined,
     tasks: list(),
   },
 
@@ -13,7 +13,7 @@ const main = new Vue({
       },
       update: function(todo){
         update(todo);
-        this.selectedTask = 0
+        this.selectedTask = undefined
       },
       markCompleted: function(todo){
         console.log(123);
